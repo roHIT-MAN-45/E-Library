@@ -1,0 +1,29 @@
+.footer {
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: footer-appear 1s ease-out forwards;
+}
+
+.footer p {
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.footer p span {
+  font-weight: 600;
+  color: var(--header-btn-color);
+}
+
+@keyframes footer-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

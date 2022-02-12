@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./Components/Header/Header";
+import Books from "./Components/Books/Books";
+import BookCart from "./Components/BookCart/BookCart";
+import BookProvider from "./Context/BookProvider";
+import Copyright from "./Components/Copyright Block/Copyright";
 
 function App() {
+  const [showBookCart, setShowBookCart] = useState(false);
+
+  const displayBookCart = () => {
+    setShowBookCart(true);
+  };
+
+  const dismissBookCart = () => {
+    setShowBookCart(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BookProvider>
+      {showBookCart && <BookCart onDismissBookCart={dismissBookCart} />}
+      <Header onDisplayBookCart={displayBookCart} />
+      <main>
+        <Books />
+      </main>
+      <Copyright/>
+    </BookProvider>
   );
 }
 
